@@ -7,7 +7,7 @@ spider_queue = MogoQueue('meinvxiezhenji', 'crawl_queue')
 def start(url):
     response = request.get(url, 3)
     Soup = BeautifulSoup(response.text, 'lxml')
-    all_a = Soup.find('div', class_='all').find_all('a')
+    all_a = Soup.find('div', class_='all').find_all('a')[1:]
     for a in all_a:
         title = a.get_text()
         url = a['href']
